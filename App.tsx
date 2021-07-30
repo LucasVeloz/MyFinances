@@ -1,21 +1,39 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { useColorScheme } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { ThemeProvider } from 'styled-components/native';
+
+import AppLoading from 'expo-app-loading';
+import { StatusBar } from 'expo-status-bar';
+
+import theme from './src/global/styles/theme';
+import darkTheme from './src/global/styles/darkTheme';
+import { Routes } from './src/routes';
+
+import { useFonts, Raleway_700Bold } from '@expo-google-fonts/raleway';
+import { Ubuntu_400Regular, Ubuntu_700Bold } from '@expo-google-fonts/ubuntu';
 
 export default function App() {
+  const currentTheme = useColorScheme();
+  const [fontsLoaded] = useFonts({
+    Raleway_700Bold,
+    Ubuntu_400Regular,
+    Ubuntu_700Bold
+  })
+  if (!fontsLoaded) {
+    <AppLoading />
+  }
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <ThemeProvider theme={currentTheme === 'dark' ? darkTheme : theme}>
+      <NavigationContainer>
+        <StatusBar
+          backgroundColor="transparent"
+          translucent 
+          style="auto"
+        />
+        <Routes />
+      </NavigationContainer>
+    </ThemeProvider>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
