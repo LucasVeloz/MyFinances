@@ -1,11 +1,11 @@
-import styled from "styled-components/native";
+import styled from 'styled-components/native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { RFValue } from "react-native-responsive-fontsize";
-import { BlurView } from "expo-blur";
+import { RFValue } from 'react-native-responsive-fontsize';
+import { BlurView } from 'expo-blur';
 
 export const Container = styled(BlurView).attrs({
   tint: 'dark',
-  intencity: 100
+  intencity: 100,
 })`
   flex: 1;
   align-items: center;
@@ -25,15 +25,15 @@ export const Box = styled.View`
 `;
 
 export const Title = styled.Text`
-  font-family: ${({theme}) => theme.fonts.titleBold};
+  font-family: ${({ theme }) => theme.fonts.titleBold};
   color: ${({ theme }) => theme.colors.primary};
   text-align: center;
   font-size: ${RFValue(32)}px;
 `;
 
 export const Icon = styled(MaterialCommunityIcons).attrs({
-  name: 'check-circle'
+  name: 'check-circle',
 })`
   font-size: 100px;
-  color: ${({ theme}) => theme.colors.green};
+  color: ${({ theme }) => theme.colors.green};
 `;

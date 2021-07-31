@@ -6,7 +6,7 @@ export const DescriptionSignUp = () => {
   const [isVisible, setIsVisible] = useState(false);
   return (
     <Container>
-      <SucessModal visible={isVisible} title={`conta criada com sucesso!`} />
+      <SucessModal visible={isVisible} title="conta criada com sucesso!" />
     </Container>
-    );
+  );
 };
