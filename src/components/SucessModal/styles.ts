@@ -4,7 +4,7 @@ import { RFValue } from 'react-native-responsive-fontsize';
 import { BlurView } from 'expo-blur';
 
 export const Container = styled(BlurView).attrs({
-  tint: 'dark',
+  tint: 'default',
   intencity: 100,
 })`
   flex: 1;

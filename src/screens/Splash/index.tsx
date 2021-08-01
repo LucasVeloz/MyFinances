@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import Animated, {
   Extrapolate,
@@ -18,9 +18,9 @@ export const Splash = () => {
   const translateY = useSharedValue(0);
   const navigation = useNavigation();
 
-  const goHome = () => {
+  const goHome = useCallback(() => {
     navigation.navigate('descriptionSignUp');
-  };
+  }, [navigation]);
 
   const imageStyle = useAnimatedStyle(() => ({
     transform: [{ translateY: translateY.value }],
@@ -59,12 +59,12 @@ export const Splash = () => {
         runOnJS(goHome)();
       },
     );
-  }, []);
+  }, [goHome, translateY.value]);
 
   return (
     <Container>
       <Animated.View style={imageStyle}>
-        <Logo />
+        <Logo style={{ width: 350, height: 76 }} />
       </Animated.View>
       <Animated.View style={ilustrationStyle}>
         <Ilustration />
